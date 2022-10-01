@@ -1,0 +1,32 @@
+
+<form>
+<div class="mb-3">
+
+    <label for="webApitypeid" class="form-label">Producto</label>
+   <!--<input type="text" class="form-control" name="ProductoID" [(ngModel)]="ProductoID" 
+    *ngIf="producto.id!=0" disabled>--> 
+    <select class="form-control" name="webApitypeid" id="webApitypeid" [(ngModel)]
+    ="webApitypeid" *ngIf="defectuoso.id==0">
+    <option *ngFor="let type of defectuosotypelist$|async" [value]="type.id">{{type.productoname}}</option>
+</select>
+</div>
+<div class="mb-3">
+    <label for="status" class="form-label">Estado</label>
+    <select class="form-control" name="estado" id="estado" [(ngModel)]="estado">}
+        <option *ngFor="let estado of estadoList$|async" [value]="estado.estadoOp">{{estado.estadoOp}}</option>
+    </select>
+</div>
+
+<div class="mb-3">
+ <label for="Comentario" class="form-label">Comentario</label>
+ <input type="text" class="form-control" [(ngModel)]="comentario" name="comentario ">
+</div>
+
+<button (click)="addDefectuoso()" *ngIf="defectuoso.id==0" class="btn btn-primary">
+agregar
+</button>
+
+<button (click)="ActualizarProductos()" *ngIf="defectuoso.id!=0" class="btn btn-primary">
+Actualizar
+</button>
+</form>

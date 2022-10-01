@@ -1,0 +1,20 @@
+scrips 
+cordial saludo en esta prueba solamente se termino la parte del backend y parte de front-end 
+
+
+
+para este proyecto no creo codigo en SQl Server si no que lo hice desde el visual estudio con las migraciones
+
+para migrar esta prueba primero ubique el terminal llamado (Consola del administrador de paquete)
+
+y coloque el siguiente codigo
+
+* dotnet tool install --global dotnet-ef
+
+y para migrar las tablas 
+
+* dotnet ef migrations add InitialCreate (en dado caso que cause conflicto con la carpeta migracion del proyecto puede eliminarla)
+*dotnet ed database update (y este codigo es para migrar completamente la base de datos)
+
+antes de esto ingresar a appsettings.json y cambie la cadena de conexion 
+y listo

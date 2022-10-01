@@ -1,0 +1,84 @@
+  <!-- agregar productos modal -->
+  <button type="button" class="btn btn-primary float-end m-2" data-bs-toggle="modal" 
+  data-bs-target="#staticBackdrop" 
+  (click)="modalAdd()"
+  >
+    agregar prodcutos
+  </button>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-secondary float-end m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Registrar
+   </button>
+   <br>
+<table class="table table-striped">
+<thead>
+    <th>id</th>
+    <th>Productos</th>
+    <th>Estado</th>
+    <th>Comentario</th>
+</thead>
+<tbody>
+    <tr *ngFor="let item of DefectuosoList$|async">
+        <td>{{item.id}} </td>
+        <td>{{defectuosoTypeMap.get(item.id)}}</td>
+       <!----<td>{{item.webApitypeid}} </td> -->
+        <td>{{item.estado}} </td>
+        <td>{{item.comentario}} </td>
+    </tr>
+</tbody>
+</table>
+
+<div class="alert alert-success" role="alert" id="add-success-alert">
+  Success
+</div>
+
+<div class="alert alert-success" role="alert" id="update-success-alert">
+  Success Update
+</div>
+
+<div class="alert alert-success" role="alert" id="delete-success-alert">
+  Success Delete
+</div>
+
+
+
+  
+  <!-- add prodcutos trigger modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Producto APP</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <p *ngFor="let type of DefectuosoTypeList$|async">{{type.id}} - {{type.productoname}}</p>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  
+  <!--  add  or dsaas new Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">{{modalTitle}}</h5>
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+           (click)=" modalclose()" id="add-edit-modal-close"
+           ></button>
+        </div>
+        <div class="modal-body">
+        <app-add-edit-defectuoso [defectuoso]="DefectuosoTypeList" *ngIf="activateAddEditProducto">
+        </app-add-edit-defectuoso>
+        </div>
+    
+      </div>
+    </div>
+  </div>
